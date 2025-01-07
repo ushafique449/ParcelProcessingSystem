@@ -32,11 +32,12 @@ public class Log {
     }
 
     // Method to save logged events to a file
-    public void saveToFile(String filename) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            writer.write(events.toString());
-        } catch (IOException e) {
-            System.out.println("Error saving log to file: " + e.getMessage());
-        }
+   public void saveToFile(String filename) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+        writer.write(events.toString());
+    } catch (IOException e) {
+        System.out.println("Error saving log to file: " + e.getMessage());
     }
+}
+
 }
