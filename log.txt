@@ -1,5 +1,2 @@
-Processed customer: John Doe
-Processed customer: Jane Smith
-Added customer: James
-Added parcel: P9
-Processed customer: Michael Brown
+Processed customer: Ann Jones
+Added parcel: a1

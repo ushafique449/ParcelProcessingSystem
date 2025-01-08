@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import java.awt.Font;
@@ -10,10 +6,6 @@ import model.*;
 import view.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/**
- *
- * @author PC
- */
 public class MainController {
     private final MainFrame mainFrame;
     private final QueueOfCustomers customerQueue;
@@ -26,10 +18,8 @@ public class MainController {
         this.parcelMap = parcelMap;
         this.worker = worker;
 
-        // Set up listeners for buttons
         setupListeners();
 
-        // Update the GUI panels with initial data
         updateCustomerQueuePanel();
         updateParcelListPanel();
         updateProcessingPanel(null, null);
@@ -37,7 +27,6 @@ public class MainController {
     }
 
     private void setupListeners() {
-        // Listener for "Process Next Customer" button
         mainFrame.getProcessButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,7 +34,7 @@ public class MainController {
             }
         });
 
-        // Listener for "Add Customer" button
+        
         mainFrame.getAddCustomerButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +42,7 @@ public class MainController {
             }
         });
 
-        // Listener for "Add Parcel" button
+        
         mainFrame.getAddParcelButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,7 +50,7 @@ public class MainController {
             }
         });
 
-        // Listener for "Exit" button
+        
         mainFrame.getExitButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +59,7 @@ public class MainController {
         });
     }
 
-    // Process the next customer in the queue
+    
     private void processNextCustomer() {
         Customer customer = customerQueue.removeCustomer();
         if (customer != null) {
@@ -90,7 +79,7 @@ public class MainController {
         }
     }
 
-    // Add a new customer
+    
     private void addCustomer() {
         String name = JOptionPane.showInputDialog(mainFrame, "Enter customer name:");
         String parcelId = JOptionPane.showInputDialog(mainFrame, "Enter parcel ID:");
@@ -103,7 +92,7 @@ public class MainController {
         }
     }
 
-    // Add a new parcel
+    
     private void addParcel() {
         String id = JOptionPane.showInputDialog(mainFrame, "Enter parcel ID:");
         try {
@@ -119,14 +108,14 @@ public class MainController {
         }
     }
 
-    // Exit the application and save logs
+    
     private void exitApplication() {
         Log.getInstance().saveToFile("log.txt");
         JOptionPane.showMessageDialog(mainFrame, "Logs saved to log.txt. Exiting...");
         System.exit(0);
     }
 
-    // Update the Customer Queue Panel
+    
     private void updateCustomerQueuePanel() {
         JPanel customerQueuePanel = mainFrame.getCustomerQueuePanel();
         customerQueuePanel.removeAll();
@@ -139,7 +128,7 @@ public class MainController {
         customerQueuePanel.repaint();
     }
 
-    // Update the Parcel List Panel
+    
     private void updateParcelListPanel() {
         JPanel parcelListPanel = mainFrame.getParcelListPanel();
         parcelListPanel.removeAll();
@@ -152,7 +141,7 @@ public class MainController {
         parcelListPanel.repaint();
     }
 
-    // Update the Processing Panel
+    
     private void updateProcessingPanel(Customer customer, Parcel parcel) {
         JPanel processingPanel = mainFrame.getProcessingPanel();
         processingPanel.removeAll();
@@ -172,7 +161,7 @@ public class MainController {
         processingPanel.repaint();
     }
 
-    // Update the Log Panel
+    
     private void updateLogPanel() {
         JPanel logPanel = mainFrame.getLogPanel();
         logPanel.removeAll();

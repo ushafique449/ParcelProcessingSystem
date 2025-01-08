@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,12 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.io.*;
 import java.util.*;
+import org.apache.commons.csv.*;
 
 
-/**
- *
- * @author PC
- */
 public class ParcelMap {
     private Map<String, Parcel> parcels;
 
@@ -43,21 +36,32 @@ public class ParcelMap {
                   .sorted(Comparator.comparingInt(Parcel::getDaysInDepot))
                   .collect(Collectors.toList());
 }
+ 
  public void loadFromFile(String filename) throws IOException {
     try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
         String line;
+        boolean firstLine = true; 
         while ((line = reader.readLine()) != null) {
+            if (firstLine) {
+                firstLine = false;
+                continue;
+            }
+
+            
             String[] data = line.split(",");
+
+            
             String id = data[0];
             double length = Double.parseDouble(data[1]);
             double width = Double.parseDouble(data[2]);
             double height = Double.parseDouble(data[3]);
             double weight = Double.parseDouble(data[4]);
             int daysInDepot = Integer.parseInt(data[5]);
+
+            
             Dimension dimensions = new Dimension(length, width, height);
             addParcel(new Parcel(id, dimensions, weight, daysInDepot));
         }
     }
 }
-   
 }
